@@ -1,0 +1,162 @@
+/* 공통 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #777;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 회원가입 페이지 컨테이너 */
+.signup_container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    height: 800px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* 좌측 웰컴 섹션 */
+.welcome_section {
+    width: 60%;
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+}
+
+.welcome_section h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.welcome_section p {
+    font-size: 1.2rem;
+    color: #bbb;
+}
+
+/* 우측 회원가입 섹션 */
+.signup_section {
+    width: 40%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #222;
+}
+
+.signup_form {
+    width: 80%;
+    max-width: 350px;
+}
+
+.signup_form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333;
+}
+
+.input_wrap {
+    margin-bottom: 15px;
+}
+
+.input_wrap label {
+    font-size: 1rem;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input_wrap input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+.input_wrap input:focus {
+    border-color: #333;
+}
+
+.input_wrap button {
+    background-color: #fff;
+    border: 1px solid #222;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.input_wrap button:hover {
+    background-color: #222;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.button_wrap button {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    /* cursor: pointer;
+    transition: background-color 0.3s ease; */
+}
+
+.button_wrap button:hover {
+    background-color: #555;
+    transition: 0.3s;
+}
+
+/* 로그인 링크 스타일 */
+.login_wrap {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.login_wrap p {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.login_wrap a {
+    color: #1D7BFA;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login_wrap a:hover {
+    color: #555;
+    transition: 0.3s;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .signup_container {
+        flex-direction: column;
+    }
+
+    .welcome_section,
+    .signup_section {
+        width: 100%;
+    }
+}

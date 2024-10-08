@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오카오카이 냐옹카이 | 회원가입</title>
+    <link rel="stylesheet" href="FE/css/signup.css">
+    <script src="signup.js"></script>
+</head>
+
+<body>
+    <div class="signup_container">
+        <div class="welcome_section">
+            <h1>Krafton Jungle</h1>
+            <p>크래프톤 정글 칭찬 게시판에 오신 것을 환영합니다.</p>
+        </div>
+        <div class="signup_section">
+            <div class="signup_form">
+                <h2>회원가입</h2>
+                <form action="#" method="POST">
+                    <div class="input_wrap">
+                        <label for="username">닉네임</label>
+                        <input type="text" id="username" name="username" placeholder="닉네임을 입력하세요." required>
+                        <button type="button" class="check_btn" onclick="checkUsername()">중복 확인</button>
+                        <p id="username_message" class="message"></p>
+                    </div>
+                    <div class="input_wrap">
+                        <label for="email">이메일</label>
+                        <input type="email" id="email" name="email" placeholder="이메일을 입력하세요." required>
+                        <button type="button" class="check_btn" onclick="checkEmail()">중복 확인</button>
+                        <p id="email_message" class="message"></p>
+                    </div>
+                    <div class="input_wrap">
+                        <label for="password">비밀번호</label>
+                        <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요." required>
+                    </div>
+                    <div class="input_wrap">
+                        <label for="confirm_password">비밀번호 확인</label>
+                        <input type="password" id="confirm_password" name="confirm_password" placeholder="비밀번호를 다시 입력하세요." required>
+                    </div>
+                    <div class="button_wrap">
+                        <button type="submit">회원가입</button>
+                    </div>
+                    <div class="login_wrap">
+                        <p>이미 계정이 있으신가요? <a href="login.html">로그인</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

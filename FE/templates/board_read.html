@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오카오카이 냐옹카이</title>
+    <link rel="stylesheet" href="FE/css/css.css">
+    <script></script>
+</head>
+
+<body>
+    <header>
+        <div class="header_buttons">
+            <a href="login.html" class="login_button">로그아웃</a>
+        </div>
+    </header>
+    <div class="board_wrap">
+        <div class="board_title">
+            <strong>공지사항</strong>
+            <p>공지사항을 안내해드립니다.</p>
+        </div>
+        <div class="board_read_wrap">
+            <div class="board_read">
+                <div class="title">
+                    제목입니다.
+                </div>
+                <div class="info">
+                    <dl>
+                        <dt>번호</dt>
+                        <dd>1</dd>
+                    </dl>
+                    <dl>
+                        <dt>작성자</dt>
+                        <dd id="writer">김용성</dd>
+                    </dl>
+                    <dl>
+                        <dt>작성일</dt>
+                        <dd>24.10.04</dd>
+                    </dl>
+                    <dl>
+                        <dt>조회수</dt>
+                        <dd>153</dd>
+                    </dl>
+                </div>
+                <div class="contents">
+                    안녕하세요 제 이름은 김용성입니다.<br>
+                    자바스크립트를 이용해서 게시판을 만들어보겠습니다.<br>
+                    하하하<br>
+                    이즈잇 밥김국<br>
+                    밥이랑 김치랑 국만 있으면 1년 내내 살 수 있다는 뜻입니다.<br>
+                    크래프톤 정글 6기<br>
+                    516호 화이팅
+                </div>
+            </div>
+            <div class="board_read_comment">
+                <h3>댓글</h3>
+                <ul id="commentList" class="comment_list">
+                </ul>
+                <div class="comment_input_wrap">
+                    <textarea id="commentInput" class="comment_input" placeholder="댓글을 입력하세요."></textarea>
+                    <button type="button" class="comment_button" onclick="addComment()">입력</button>
+                </div>
+            <div class="board_button_wrap" id="buttonWrap">
+                <a href="board_list.html" class="on">목록보기</a>
+                <a href="board_write.html" id="editButton" style="display:none;">수정하기</a>
+                <a href="#" id="deleteButton" style="display:none;">수정하기</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
