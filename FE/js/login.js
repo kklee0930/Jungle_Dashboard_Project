@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // 서버로 로그인 요청 보내기
-        fetch("/users/login", {
+        fetch("/api/v1/users/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

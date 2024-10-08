@@ -6,7 +6,7 @@ function checkUsername(){
         return;
     }
     // 서버로 닉네임 중복 확인 요청 보내기
-    fetch("/users/" + username + "/duplicate", {
+    fetch("/api/v1/users/" + username + "/duplicate", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -35,7 +35,7 @@ function checkEmail(){
         return;
     }
     
-    fetch("/users/" + email + "/duplicate", {
+    fetch("/api/v1/users/" + email + "/duplicate", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
