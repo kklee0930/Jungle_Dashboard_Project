@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     try {
         // 게시물 가져오는 API 호출
         const id = getQueryParameter('id');
-        const response = await fetch(`posts/${post-id}`);
+        const response = await fetch(`/api/v1/posts/${post-id}`);
         if (!response.ok) {
             throw new Error("api 호출 실패");
         }
