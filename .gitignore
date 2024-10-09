@@ -1,7 +1,0 @@
-### Demo Server ###
-node_modules/
-package-lock.json
-package.json
-db.json
-routes.json
-server.js
