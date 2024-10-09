@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(response => response.json())
         .then(data => {
-            if (data.success) {
+            if (data.successful) {
                 // 로그인 성공 시 메인 페이지로 이동
                 alert("환영합니다!");
                 window.location.href = "board_list.html"; // 메인 페이지로 리다이렉트
