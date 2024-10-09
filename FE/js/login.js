@@ -23,16 +23,16 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem('userData', JSON.stringify(user));
         }
 
-        // // 입력한 값 가져오기
-        // const uuid = 1234;
-        // const username = "용's"
+        // 입력한 값 가져오기
+        const uuid = 1234;
+        const username = "용's"
 
-        // // 로컬스토리지에 저장
-        // saveToLocalStorage(uuid, username);
+        // 로컬스토리지에 저장
+        saveToLocalStorage(uuid, username);
 
 
         // 서버로 로그인 요청 보내기
-        fetch("http://192.168.1.22:2000/api/v1/auth/sign-in", {
+        fetch("/api/v1/users/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

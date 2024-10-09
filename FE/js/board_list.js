@@ -74,7 +74,7 @@
 document.addEventListener("DOMContentLoaded", async function() {
     try {
         // 게시글 목록을 가져오는 API 호출
-        const response = await fetch("http://192.168.1.22:3000/api/v1/board");
+        const response = await fetch("/api/v1/posts/posts-list");
         if (!response.ok) {
             throw new Error("API 호출에 실패했습니다.");
         }

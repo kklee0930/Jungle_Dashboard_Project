@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     try {
         // 게시물 가져오는 API 호출
         const id = getQueryParameter('id');
-        const response = await fetch(`http://192.168.1.22:3000/api/v1/board/${id}`);
+        const response = await fetch(`posts/${post-id}`);
         if (!response.ok) {
             throw new Error("api 호출 실패");
         }
@@ -17,27 +17,28 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.log(data);
         // 데이터 잘 받았으면 게시글 표시
         if (data) {
-            const titleElement = document.querySelector(".title");
-            titleElement.textContent = data.title;
-
             // 게시물 정보 표시
-            // const title = document.querySelector(".title");
-            // const num = document.querySelector(".board_read .num");
-            // const writer = document.querySelector(".board_read .writer");
-            // const date = document.querySelector(".board_read .date");
-            // const count = document.querySelector(".board_read .count");
+            const titleElement = document.querySelector(".title");         
+            const num = document.querySelector(".board_read .num");
+            const writer = document.querySelector(".board_read .writer");
+            const date = document.querySelector(".board_read .date");
+            const count = document.querySelector(".board_read .count");
             const content = document.querySelector(" .contents");
 
-            // title.textContent = data.title;
-            // num.textContent = data.num;
-            // writer.textContent = data.writer;
-            // date.textContent = data.date;
-            // count.textContent = data.count;
+            titleElement.textContent = data.title;
+            num.textContent = data.num;
+            writer.textContent = data.writer;
+            date.textContent = data.date;
+            count.textContent = data.count;
             content.textContent = data.content;
 
             const contentsElement = document.createElement("div");
             contentsElement.innerHTML = `
                 <div class="title">${data.title}</div>
+                <div class="num">${data.num}</div>
+                <div class="writer">${data.writer}</div>
+                <div class="date">${data.date}</div>
+                <div class="count">${data.count}</div>
                 <div class="contents">${data.content}</div>
             `
             console.log(data.title);

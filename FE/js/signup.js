@@ -80,7 +80,7 @@ async function checkUsername() {
 
     try {
         // 서버로 닉네임 중복 확인 요청 보내기
-        const response = await fetch("/api/v1/users/" + username + "/duplicate", {
+        const response = await fetch("/api/v1/users/" + username + "/username-duplicate", {
             method: "GET",
         });
 
@@ -110,7 +110,7 @@ async function checkEmail() {
 
     try {
         // 서버로 이메일 중복 확인 요청 보내기
-        const response = await fetch("/api/v1/users/" + email + "/duplicate", {
+        const response = await fetch("/api/v1/users/" + email + "/email-duplicate", {
             method: "GET",
         });
 
@@ -143,3 +143,5 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "../login.html";
     });
 });
+
+// 회원가입 완료된거 POST 작업 필요..
