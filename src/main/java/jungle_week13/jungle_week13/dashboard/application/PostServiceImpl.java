@@ -160,7 +160,7 @@ public class PostServiceImpl implements PostService {
     // 모든 게시글 조회
     @Override
     public ResponseGetPostListDto getPostList() {
-        List<Post> postList = postRepository.getAllBySoftDeleteFalseAndOrderById();
+        List<Post> postList = postRepository.getAllBySoftDeleteFalseOrderById();
         return modelMapper.map(postList, ResponseGetPostListDto.class);
     }
 }

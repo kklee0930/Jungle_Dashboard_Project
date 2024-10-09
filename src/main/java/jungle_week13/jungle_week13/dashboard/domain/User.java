@@ -10,6 +10,7 @@ import java.util.UUID;
 import static jakarta.persistence.FetchType.*;
 
 @Entity
+@Table(name = "CLIENT_USER")
 @Getter
 @Builder
 @AllArgsConstructor
@@ -24,7 +25,7 @@ public class User {
     @Column(nullable = false)
     private String email;
 
-    @OneToMany(fetch = LAZY, mappedBy = "post")
+    @OneToMany(fetch = LAZY, mappedBy = "user")
     private List<Post> postList = new ArrayList<>();
 
     // 회원가입 시 입력한 유저의 username

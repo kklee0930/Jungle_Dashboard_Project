@@ -21,9 +21,8 @@ public class Post {
     @Column(name = "post_id")
     private Long id;
 
-    @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
-    @Column(nullable = false, name = "uuid")
-    @JoinColumn(name = "uuid")
+    @ManyToOne(fetch = LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "uuid", nullable = false)
     private User user;
 
     // 게시물 번호(생성 순서대로 할당됨)

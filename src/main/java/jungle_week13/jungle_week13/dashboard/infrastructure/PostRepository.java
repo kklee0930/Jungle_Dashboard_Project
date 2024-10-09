@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
-    List<Post> getAllBySoftDeleteFalseAndOrderById(); // 삭제되지 않은 모든 게시글 조회
+    List<Post> getAllBySoftDeleteFalseOrderById(); // 삭제되지 않은 모든 게시글 조회
 }
