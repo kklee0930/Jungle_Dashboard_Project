@@ -14,4 +14,5 @@ public class ResponseFindPostDto {
     private String postContent; // 게시물 내용
     private Long viewCount; // 게시물 조회 수
     private LocalDateTime createdDate; // 게시물 작성일
+    private Boolean isSuccessful; // 게시물 조회 성공 여부
 }

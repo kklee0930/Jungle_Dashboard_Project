@@ -18,10 +18,8 @@ public class Comment {
     @Column(name = "comment_id")
     private Long id;
 
-    // TODO: 설정한 연관관계 맞는지 확인하기
-    // TODO: cascade 걸어줘야 하는지 확인하기
     @Column
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "post_id")
     private Post post;
 
@@ -36,12 +34,12 @@ public class Comment {
     // 댓글 작성일
     @Column(nullable = false, name = "comment_date")
     @ColumnDefault(value = "nextval('comment_no_seq')")
-    private LocalDateTime createdDate;
+    private LocalDateTime createdDate = LocalDateTime.now();
 
     // 댓글 좋아요 수
     @Column(nullable = false, name = "comment_like")
     @ColumnDefault(value = "0")
-    private Integer likeCount;
+    private Integer likeCount = 0;
 
     // 댓글 작성자의 uuid
     @Column(nullable = false, name = "uuid")
@@ -50,7 +48,20 @@ public class Comment {
     // 댓글 소프트 딜리트 여부
     @Column(nullable = false, name = "soft_delete")
     @ColumnDefault(value = "false")
-    private Boolean softDelete;
+    private Boolean softDelete = false;
 
-    public void updateComment(String title, )
+    /**
+     * 엔티티 메서드
+     */
+
+    // 댓글 수정
+    public Comment updateComment(String content) {
+        this.content = content;
+        return this;
+    }
+
+    // 댓글 삭제
+    public void deleteComment() {
+        this.softDelete = true;
+    }
 }

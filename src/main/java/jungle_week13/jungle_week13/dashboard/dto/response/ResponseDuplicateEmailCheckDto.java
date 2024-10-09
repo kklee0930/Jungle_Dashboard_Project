@@ -9,10 +9,4 @@ import lombok.Getter;
 public class ResponseDuplicateEmailCheckDto {
 
     private Boolean isDuplicate;
-
-//    public static ResponseDuplicateEmailCheckDto formResponseDto(Boolean isDuplicate) {
-//        return ResponseDuplicateEmailCheckDto.builder()
-//                .isDuplicate(isDuplicate)
-//                .build();
-//    }
 }

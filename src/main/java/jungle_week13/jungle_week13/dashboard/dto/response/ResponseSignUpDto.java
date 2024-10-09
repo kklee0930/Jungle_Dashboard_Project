@@ -7,10 +7,11 @@ import java.util.UUID;
 
 @Getter
 @Builder
-public class ResponseLoginDto {
+public class ResponseSignUpDto {
 
+    private UUID uuid;
     private String email;
     private String username;
-    private UUID uuid;
+    private String password;
     private Boolean isSuccessful;
 }

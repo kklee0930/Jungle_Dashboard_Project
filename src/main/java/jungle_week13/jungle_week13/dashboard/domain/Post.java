@@ -17,13 +17,11 @@ import static jakarta.persistence.FetchType.*;
 @AllArgsConstructor
 public class Post {
 
-    // TODO:GeneratedValue(strategy = GenerationType.IDENTITY) 사용하는거 맞는지 double check하기
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "post_id")
     private Long id;
 
-    // TODO: 설정한 연관관계 맞는지 확인하기
-    @OneToOne(fetch = LAZY)
+    @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
     @Column(nullable = false, name = "uuid")
     @JoinColumn(name = "uuid")
     private User user;
@@ -33,7 +31,6 @@ public class Post {
     @ColumnDefault(value = "nextval('post_no_seq')")
     private Long number;
 
-    // TODO: 설정한 연관관계 맞는지 확인하기
     @OneToMany(fetch = LAZY, mappedBy = "post")
     private List<Comment> commentList = new ArrayList<>();
 
@@ -48,20 +45,31 @@ public class Post {
     // 게시물 조회 수
     @Column(nullable = false, name = "post_view")
     @ColumnDefault(value = "1")
-    private Long viewCount;
+    private Long viewCount = 1L;
 
     // 게시물 생성일
     @Column(nullable = false, name = "post_date")
     @ColumnDefault(value = "to_char(current_date, 'YYYY.MM.DD')")
-    private LocalDateTime createdDate;
+    private LocalDateTime createdDate = LocalDateTime.now();
 
     // 게시물 소프트 딜리트 여부
     @Column(nullable = false, name = "soft_delete")
     @ColumnDefault(value = "false")
-    private Boolean softDelete;
+    private Boolean softDelete = false;
 
-    public void updatePost(String title, String content) {
+    /**
+     * 엔티티 메서드
+     */
+
+    // 게시물 수정
+    public Post updatePost(String title, String content) {
         this.title = title;
         this.content = content;
+        return this;
+    }
+
+    // 게시물 삭제
+    public void deletePost() {
+        this.softDelete = true;
     }
 }

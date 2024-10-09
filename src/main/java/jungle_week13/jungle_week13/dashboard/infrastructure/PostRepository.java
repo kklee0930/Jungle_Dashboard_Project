@@ -5,8 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
-    List<Post> getAllBySoftDeleteAndOrderById(boolean softDelete);
+    List<Post> getAllBySoftDeleteFalseAndOrderById(); // 삭제되지 않은 모든 게시글 조회
 }
