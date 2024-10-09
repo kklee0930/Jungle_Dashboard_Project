@@ -15,3 +15,15 @@ if (loggedInUserId === writerId) {
     deleteButton.style.display = "none"; // 삭제하기 버튼 숨김
     editButton.style.display = "none"; // 수정하기 버튼 숨김
 }
+
+document.addEventListener("DOMcontentLoaded", function() {
+    const submitButton = document.querySelector(".board_button_wrap .on");
+
+    submitButton.addEventListener("click", async function (event) {
+        event.preventDefault();     // 페이지 리로드 방지
+
+        const title = document.querySelector(".board_write .title input").value;
+        const content = document.querySelector(".board_write .contents textarea").value;
+        
+    })
+})

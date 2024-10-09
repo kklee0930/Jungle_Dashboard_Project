@@ -74,27 +74,27 @@
 document.addEventListener("DOMContentLoaded", async function() {
     try {
         // 게시글 목록을 가져오는 API 호출
-        const response = await fetch("/api/v1/board/list");
+        const response = await fetch("http://192.168.1.22:3000/api/v1/board");
         if (!response.ok) {
             throw new Error("API 호출에 실패했습니다.");
         }
         const data = await response.json();
 
         // 데이터가 정상적으로 오면 글 목록을 화면에 표시
-        if (data && Array.isArray(data.articles)) {
+        if (data && Array.isArray(data)) {
             const boardList = document.querySelector(".board_list");
-            const articles = data.articles;  // 게시글 목록
+            const articles = data;  // 게시글 목록
 
             articles.forEach(article => {
                 const articleElement = document.createElement("div");
                 articleElement.classList.add("article");
 
                 articleElement.innerHTML = `
-                    <div class="num">${article.number}</div>
+                    <div class="num">${article.id}</div>
                     <div class="title"><a href="board_read.html?id=${article.id}">${article.title}</a></div>
-                    <div class="writer">${article.writer}</div>
-                    <div class="date">${article.date}</div>
-                    <div class="count">${article.viewCount}</div>
+                    
+                    
+                    
                 `;
 
                 boardList.appendChild(articleElement);
