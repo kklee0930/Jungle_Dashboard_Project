@@ -1,0 +1,23 @@
+#spring.application.name=jungle-week13-dashboard
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/jungle
+    username: sa
+    password:
+    hikari:
+      driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+
+logging:
+  level:
+    sql: debug
