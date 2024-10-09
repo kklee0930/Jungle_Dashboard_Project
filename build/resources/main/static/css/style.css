@@ -1,0 +1,340 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 11px;
+}
+
+ul,li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.board_wrap{
+    width: 1000px;
+    margin: 100px auto;
+}
+
+.board_title{
+    margin-bottom: 30px;
+}
+
+.board_title{
+    font-size: 3rem ;
+}
+
+.board_title p {
+    margin-top: 5px;
+    font-size: 1.5rem;
+}
+
+.board_button_wrap{
+    margin-top: 25px;
+    text-align: center;     /* 버튼 정렬 */
+}
+
+.board_button_wrap a{
+    display: inline-block;
+    min-width: 80px;
+    margin-left: 10px;      /* 가운데 정렬한거를 버튼을 왼쪽 바깥 여백주기 */
+    padding: 15px;          /* 안쪽 여백 */
+    border: 1px solid #222;
+    border-radius: 5px;
+    font-size: 1.5rem;
+}
+
+.board_button_wrap a:first-child {      /* 첫 번째 버튼의 왼쪽 바깥 여백 안주기 */
+    margin-left: 0;
+}
+
+.board_button_wrap a.on{
+    background-color: #222;
+    color: white;   
+}
+
+.board_button_wrap a.on:hover{
+    background-color: #555;
+    border: 1px solid #555;
+    transition: 0.3s;
+}
+
+.board_list{
+    width: 100%;
+    border-top: 2px solid #222;
+    border-bottom: 1.5px solid #222;
+}
+
+.board_list > div{
+    border-bottom: 1px solid #ddd;
+    font-size: 0;
+}
+
+.board_list > div.top{
+    border-bottom: 1px solid #999;
+}
+
+.board_list > div > div{
+    display: inline-block;      /* 가로로 나열하기 */
+    padding: 10px 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.board_list > div > div a:hover{
+    color: #555;
+    border-bottom: 1px solid #555;
+    transition: 0.3s;
+}
+
+.board_list > div.top > div{
+    font-weight: 600;
+    padding: 15px 0;
+}
+
+.board_list .num{
+    width: 10%;
+}
+
+.board_list .title{
+    width: 60%;
+    text-align: left;
+}
+
+.board_list .top .title{
+    width: 60%;
+    text-align: center;
+}
+
+.board_list .writer{
+    width: 10%;
+}
+
+.board_list .date{
+    width: 10%;
+}
+
+.board_list .count{
+    width: 10%;
+}
+
+.board_page{
+    margin: 50px 0 30px 0;
+    text-align: center;
+    font-size: 0;
+}
+
+.board_page a{
+    display: inline-block;
+    width: 50px;
+    height: 30px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    font-size: 1.1rem;
+    border-left: 0;
+    vertical-align: middle;
+    line-height: 100%;
+    padding-top: 7px;
+}
+
+.board_page a:first-child{
+    border-left: 1px solid #ddd;
+}
+
+.board_page a.num.on{
+    background-color: #222;
+    border-color: #222;
+    color: #fff;
+}
+
+.board_page a:hover{
+    background-color: #777;
+    border: none;
+}
+
+.board_read{
+    width: 100%;
+    border-top: 2px solid #222;
+    font-size: 1.5rem;
+    border-bottom: 1.5px solid #222;
+}
+
+.board_read .title{
+    padding: 20px 10px;
+    border-bottom: 1px dashed #ddd;
+    font-size: 2rem;
+}
+
+.board_read .info{
+    padding: 15px 15px 15px 0;
+    border-bottom: 1.2px solid #999;
+    font-size: 0;
+    display: flex;
+}
+
+.board_read .info dl{
+    display: inline-block;
+    padding: 0 20px;
+    border-right: 1px solid #ddd;
+}
+
+.board_read .info :nth-child(4){
+    border : none;
+}
+
+.board_read .info dl dt,
+.board_read .info dl dd{
+    display: inline-block;
+    font-size: 1.4rem;
+}
+
+.board_read .info dl dd{
+    margin-left: 10px;
+    color: #777;
+}
+
+.board_read .contents {
+    padding: 15px;
+    font-size: 1.5rem;
+    line-height: 180%;
+}
+
+.board_read_comment{
+    /* margin-top: 50px; */
+    padding: 30px;
+    
+}
+
+.board_read_comment h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.comment_list {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.comment_item {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    font-size: 1.4rem;
+}
+
+.comment_input_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.comment_input {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: 1.4rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+.comment_button {
+    padding: 10px 20px;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.comment_button:hover {
+    background-color: #555;
+    transition: 0.3s;
+}
+
+
+
+
+.board_write {
+    border-top: 2px solid #222;
+}
+
+.board_write .title{
+    padding: 15px;
+    border-bottom: 1.5px solid #222;
+}
+
+.board_write .title dl {
+    font-size: 0;
+}
+
+.board_write .title dt,
+.board_write .title dd{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.5rem;
+}
+
+.board_write .title dt{
+    width: 100px;
+}
+
+.board_write .title dd{
+    width: calc(100% - 100px);
+}
+
+.board_write .title input[type = "text"]{ 
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.board_write .title input[type = "text"]{
+    width: 75%;
+}
+
+.board_write .contents{
+    border-bottom: 1.5px solid #222;
+}
+
+.board_write .contents textarea {
+    display: block;
+    width: 100%;
+    height: 300px;
+    padding: 15px;
+    box-sizing: border-box;
+    border: 0;
+    resize: vertical;
+}
+
+.header_buttons {
+    position: absolute;
+    top: 20px; /* 상단에서 20px 떨어지도록 */
+    right: 30px; /* 우측에서 30px 떨어지도록 */
+}
+
+.header_buttons a {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 10px 15px;
+    font-size: 1.2rem;
+    border: 1px solid #222;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #222;
+}
+
+.header_buttons a:hover {
+    background-color: #222;
+    color: #fff;
+    transition: 0.3s;
+}
