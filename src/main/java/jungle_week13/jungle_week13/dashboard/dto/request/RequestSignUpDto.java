@@ -1,11 +1,11 @@
 package jungle_week13.jungle_week13.dashboard.dto.request;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @Builder
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class RequestSignUpDto {
 
     private String email;

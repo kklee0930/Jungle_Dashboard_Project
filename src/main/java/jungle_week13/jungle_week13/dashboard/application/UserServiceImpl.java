@@ -82,7 +82,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public ResponseLoginDto login(RequestLoginDto requestDto) {
         try {
-            Optional<User> searchedUser = userRepository.findByEmailAndPassword(
+            Optional<User> searchedUser = userRepository.getByEmailAndPassword(
                     requestDto.getEmail(), requestDto.getPassword());
 
             if(searchedUser.isPresent()) {

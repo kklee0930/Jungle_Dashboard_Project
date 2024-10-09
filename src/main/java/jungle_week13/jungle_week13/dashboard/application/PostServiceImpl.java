@@ -1,6 +1,5 @@
 package jungle_week13.jungle_week13.dashboard.application;
 
-import jungle_week13.jungle_week13.dashboard.domain.Comment;
 import jungle_week13.jungle_week13.dashboard.domain.Post;
 import jungle_week13.jungle_week13.dashboard.domain.User;
 import jungle_week13.jungle_week13.dashboard.dto.request.RequestCreatePostDto;
@@ -15,6 +14,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +28,7 @@ public class PostServiceImpl implements PostService {
     private final PostRepository postRepository;
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
 
     // 게시글 조회
     @Override
@@ -34,13 +36,17 @@ public class PostServiceImpl implements PostService {
     public ResponseFindPostDto findPost(Long postId) {
         try {
             Optional<Post> post = postRepository.findById(postId);
-//                    .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
+
             if(post.isEmpty() || post.get().getSoftDelete()) {
                 log.error("해당 게시글이 존재하지 않습니다.");
                 return ResponseFindPostDto.builder()
                         .isSuccessful(false)
                         .build();
             }
+
+            // DateTimeFormatter 사용해서 YYYY.MM.DD 형식으로 변환
+            String formattedDate = post.get().getCreatedDate().format(formatter);
+
             return ResponseFindPostDto.builder()
                     .postId(post.get().getId())
                     .username(post.get().getUser().getUsername())
@@ -48,7 +54,7 @@ public class PostServiceImpl implements PostService {
                     .postContent(post.get().getContent())
                     .viewCount(post.get().getViewCount())
                     .isSuccessful(true)
-                    .createdDate(post.get().getCreatedDate())
+                    .createdDate(formattedDate)
                     .build();
         } catch (Exception e) {
             log.error("게시글 조회 실패", e);
@@ -75,14 +81,19 @@ public class PostServiceImpl implements PostService {
                     .content(requestDto.getPostContent())
                     .user(user.get())
                     .build();
-            postRepository.save(post);
+
+            Post savedPost = postRepository.save(post);
+
+            // DateTimeFormatter 사용해서 YYYY.MM.DD 형식으로 변환
+            String formattedDate = savedPost.getCreatedDate().format(formatter);
+
             return ResponseCreatePostDto.builder()
-                    .postId(post.getId())
-                    .createdDate(post.getCreatedDate())
-                    .title(post.getTitle())
-                    .content(post.getContent())
+                    .postId(savedPost.getId())
+                    .createdDate(formattedDate)
+                    .title(savedPost.getTitle())
+                    .content(savedPost.getContent())
                     .postCreated(true)
-                    .viewCount(post.getViewCount())
+                    .viewCount(savedPost.getViewCount())
                     .build();
         } catch (Exception e) {
             log.error("게시글 생성 실패", e);
@@ -111,6 +122,9 @@ public class PostServiceImpl implements PostService {
             }
             Post updatedPost = post.get().updatePost(requestDto.getPostTitle(), requestDto.getPostContent());
 
+            // DateTimeFormatter 사용해서 YYYY.MM.DD 형식으로 변환
+            String formattedDate = post.get().getCreatedDate().format(formatter);
+
             return ResponseUpdatePostDto.builder()
                     .postId(updatedPost.getId())
                     .isSuccessful(true)
@@ -118,7 +132,7 @@ public class PostServiceImpl implements PostService {
                     .postTitle(updatedPost.getTitle())
                     .postContent(updatedPost.getContent())
                     .viewCount(updatedPost.getViewCount())
-                    .createdDate(updatedPost.getCreatedDate())
+                    .createdDate(formattedDate)
                     .build();
         } catch (Exception e) {
             log.error("게시글 수정 실패", e);
@@ -160,7 +174,14 @@ public class PostServiceImpl implements PostService {
     // 모든 게시글 조회
     @Override
     public ResponseGetPostListDto getPostList() {
-        List<Post> postList = postRepository.getAllBySoftDeleteFalseOrderById();
-        return modelMapper.map(postList, ResponseGetPostListDto.class);
+        List<Post> postList = postRepository.findAllBySoftDeleteIsFalseOrderById();
+        List<Post.PostDTO> postDTOList = new ArrayList<>();
+
+        for(Post post : postList) {
+            postDTOList.add(post.entityToDTO());
+        }
+        return ResponseGetPostListDto.builder()
+                .postList(postDTOList)
+                .build();
     }
 }

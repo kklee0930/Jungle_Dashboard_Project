@@ -23,30 +23,30 @@ public class Comment {
     private Post post;
 
     // 댓글 작성자의 username
-    @Column(nullable = false, name = "comment_username")
+    @Column(name = "comment_username")
     private String username;
 
     // 댓글 내용
-    @Column(nullable = false, name = "comment_content")
+    @Column(name = "comment_content")
     private String content;
 
     // 댓글 작성일
-    @Column(nullable = false, name = "comment_date")
-    @ColumnDefault(value = "nextval('comment_no_seq')")
+    @Column(name = "comment_date")
+    @Builder.Default
     private LocalDateTime createdDate = LocalDateTime.now();
 
     // 댓글 좋아요 수
-    @Column(nullable = false, name = "comment_like")
-    @ColumnDefault(value = "0")
+    @Column(name = "comment_like")
+    @Builder.Default
     private Integer likeCount = 0;
 
     // 댓글 작성자의 uuid
-    @Column(nullable = false, name = "uuid")
+    @Column(name = "uuid")
     private UUID uuid;
 
     // 댓글 소프트 딜리트 여부
-    @Column(nullable = false, name = "soft_delete")
-    @ColumnDefault(value = "false")
+    @Column(name = "soft_delete")
+    @Builder.Default
     private Boolean softDelete = false;
 
     /**

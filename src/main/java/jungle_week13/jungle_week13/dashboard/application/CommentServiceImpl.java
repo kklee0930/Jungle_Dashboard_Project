@@ -16,6 +16,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -28,6 +29,7 @@ public class CommentServiceImpl implements CommentService {
     private final CommentRepository commentRepository;
     private final PostRepository postRepository;
 //    private final ModelMapper modelMapper;
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
 
     // 댓글 작성
     @Override
@@ -50,12 +52,15 @@ public class CommentServiceImpl implements CommentService {
 
             commentRepository.save(comment);
 
+            // DateTimeFormatter 사용해서 YYYY.MM.DD 형식으로 변환
+            String formattedDate = comment.getCreatedDate().format(formatter);
+
             return ResponseCreateCommentDto.builder()
                     .commentId(comment.getId())
                     .postId(postId)
                     .username(comment.getUsername())
                     .content(comment.getContent())
-                    .createdDate(comment.getCreatedDate())
+                    .createdDate(formattedDate)
                     .likeCount(comment.getLikeCount())
                     .isSuccessful(true)
                     .build();
@@ -86,12 +91,17 @@ public class CommentServiceImpl implements CommentService {
                         .build();
             }
             Comment updatedComment = comment.get().updateComment(requestDto.getCommentContent());
+
+            // DateTimeFormatter 사용해서 YYYY.MM.DD 형식으로 변환
+            String formattedDate = comment.get().getCreatedDate().format(formatter);
+
             return ResponseUpdateCommentDto.builder()
                     .commentId(updatedComment.getId())
                     .username(updatedComment.getUsername())
                     .content(updatedComment.getContent())
-                    .createdDate(updatedComment.getCreatedDate())
+                    .createdDate(formattedDate)
                     .likeCount(updatedComment.getLikeCount())
+                    .isSuccessful(true)
                     .build();
         } catch (Exception e) {
             log.error("댓글 수정 실패", e);

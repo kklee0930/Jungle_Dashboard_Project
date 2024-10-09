@@ -11,6 +11,6 @@ import java.util.UUID;
 public interface UserRepository extends JpaRepository<User, Long> {
     Boolean existsUserByEmail(String email); // 이메일 중복검사
     Boolean existsUserByUsername(String username); // 유저네임 중복검사
-    Optional<User> findByEmailAndPassword(String email, String password); // 로그인 위한 검사
+    Optional<User> getByEmailAndPassword(String email, String password); // 로그인 위한 검사
     Optional<User> findByUuid(UUID uuid); // uuid로 유저 찾기
 }

@@ -22,38 +22,38 @@ public class Post {
     private Long id;
 
     @ManyToOne(fetch = LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "uuid", nullable = false)
+    @JoinColumn(name = "uuid")
     private User user;
 
-    // 게시물 번호(생성 순서대로 할당됨)
-    @Column(nullable = false, name = "post_no")
-    @ColumnDefault(value = "nextval('post_no_seq')")
-    private Long number;
+//    // 게시물 번호(생성 순서대로 할당됨)
+//    @Column(name = "post_no")
+//    @ColumnDefault(value = "nextval('post_no_seq')")
+//    private Long number;
 
     @OneToMany(fetch = LAZY, mappedBy = "post")
     private List<Comment> commentList = new ArrayList<>();
 
     // 게시물의 제목
-    @Column(nullable = false, name = "post_title")
+    @Column(name = "post_title")
     private String title;
 
     // 게시물 내용
-    @Column(nullable = false, name = "post_content")
+    @Column(name = "post_content")
     private String content;
 
     // 게시물 조회 수
-    @Column(nullable = false, name = "post_view")
-    @ColumnDefault(value = "1")
+    @Column(name = "post_view")
+    @Builder.Default
     private Long viewCount = 1L;
 
     // 게시물 생성일
-    @Column(nullable = false, name = "post_date")
-    @ColumnDefault(value = "to_char(current_date, 'YYYY.MM.DD')")
+    @Column(name = "post_date")
+    @Builder.Default
     private LocalDateTime createdDate = LocalDateTime.now();
 
     // 게시물 소프트 딜리트 여부
-    @Column(nullable = false, name = "soft_delete")
-    @ColumnDefault(value = "false")
+    @Column(name = "soft_delete")
+    @Builder.Default
     private Boolean softDelete = false;
 
     /**
@@ -70,5 +70,25 @@ public class Post {
     // 게시물 삭제
     public void deletePost() {
         this.softDelete = true;
+    }
+
+    @Builder
+    @Getter
+    public static class PostDTO {
+        private Long id;
+        private String title;
+        private String content;
+        private Long viewCount;
+        private LocalDateTime createdDate;
+    }
+
+    public PostDTO entityToDTO() {
+        return PostDTO.builder()
+                .id(this.id)
+                .title(this.title)
+                .content(this.content)
+                .viewCount(this.viewCount)
+                .createdDate(this.createdDate)
+                .build();
     }
 }

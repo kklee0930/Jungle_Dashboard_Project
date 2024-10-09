@@ -1,8 +1,6 @@
 package jungle_week13.jungle_week13.dashboard.presentation;
 
-import jungle_week13.jungle_week13.config.JwtUtil;
 import jungle_week13.jungle_week13.dashboard.application.UserService;
-import jungle_week13.jungle_week13.dashboard.application.UserServiceImpl;
 import jungle_week13.jungle_week13.dashboard.dto.request.RequestDuplicateEmailCheckDto;
 import jungle_week13.jungle_week13.dashboard.dto.request.RequestDuplicateUsernameCheckDto;
 import jungle_week13.jungle_week13.dashboard.dto.request.RequestLoginDto;
@@ -11,25 +9,17 @@ import jungle_week13.jungle_week13.dashboard.dto.response.ResponseDuplicateEmail
 import jungle_week13.jungle_week13.dashboard.dto.response.ResponseDuplicateUsernameCheckDto;
 import jungle_week13.jungle_week13.dashboard.dto.response.ResponseLoginDto;
 import jungle_week13.jungle_week13.dashboard.dto.response.ResponseSignUpDto;
-import jungle_week13.jungle_week13.dashboard.vo.request.RequestLoginVo;
-import jungle_week13.jungle_week13.dashboard.vo.request.RequestSignUpVo;
-import jungle_week13.jungle_week13.dashboard.vo.response.ResponseDuplicateEmailCheckVo;
-import jungle_week13.jungle_week13.dashboard.vo.response.ResponseDuplicateUsernameCheckVo;
 import jungle_week13.jungle_week13.global.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/user")
+@RequestMapping("/api/v1/users")
 public class UserController {
 
     private final UserService userService;
@@ -56,8 +46,9 @@ public class UserController {
     @GetMapping("/{email}/email-duplicate")
     public ApiResponse<Object> emailDuplicateCheck(@PathVariable String email) {
 
-        RequestDuplicateEmailCheckDto requestDto =
-                modelMapper.map(email, RequestDuplicateEmailCheckDto.class);
+        RequestDuplicateEmailCheckDto requestDto = RequestDuplicateEmailCheckDto.builder()
+                .email(email)
+                .build();
 
         ResponseDuplicateEmailCheckDto responseDto = userService.checkDuplicateEmail(requestDto);
 
@@ -68,8 +59,9 @@ public class UserController {
     @GetMapping("/{username}/username-duplicate")
     public ApiResponse<Object> usernameDuplicateCheck(@PathVariable String username) {
 
-        RequestDuplicateUsernameCheckDto requestDto =
-                modelMapper.map(username, RequestDuplicateUsernameCheckDto.class);
+        RequestDuplicateUsernameCheckDto requestDto = RequestDuplicateUsernameCheckDto.builder()
+                .username(username)
+                .build();
 
         ResponseDuplicateUsernameCheckDto responseDto = userService.checkDuplicateUsername(requestDto);
 
@@ -81,7 +73,7 @@ public class UserController {
 //    public ApiResponse<Object> logout(@RequestBody )
 
     // 5. 로그인 API
-    @PostMapping("/auth/login")
+    @PostMapping("/login")
     public ApiResponse<Object> login(@Validated @RequestBody RequestLoginDto requestDto) {
 
         ResponseLoginDto responseDto = userService.login(requestDto);

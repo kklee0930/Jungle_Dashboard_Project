@@ -22,20 +22,20 @@ public class User {
     private Long id;
 
     // 회원가입 시 입력한 회원의 이메일
-    @Column(nullable = false)
+    @Column
     private String email;
 
     @OneToMany(fetch = LAZY, mappedBy = "user")
     private List<Post> postList = new ArrayList<>();
 
     // 회원가입 시 입력한 유저의 username
-    @Column(nullable = false)
+    @Column
     private String username;
 
-    @Column(nullable = false)
+    @Column
     private UUID uuid;
 
     // 회원가입 시 입력한 유저의 password
-    @Column(nullable = false)
+    @Column
     private String password;
 }
