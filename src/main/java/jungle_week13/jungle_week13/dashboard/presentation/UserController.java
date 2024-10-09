@@ -68,9 +68,11 @@ public class UserController {
         return ApiResponse.ofSuccess(responseDto);
     }
 
-    // TODO: 4. 로그아웃 API
-//    @PostMapping("/logout")
-//    public ApiResponse<Object> logout(@RequestBody )
+    // 4. 로그아웃 API
+    @PostMapping("/logout")
+    public ApiResponse<Object> logout() {
+        return ApiResponse.ofSuccess("로그아웃 되었습니다.");
+    }
 
     // 5. 로그인 API
     @PostMapping("/login")

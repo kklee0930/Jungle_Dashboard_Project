@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오카오카이 냐옹카이</title>
+    <link rel="stylesheet" href="/css/css.css">
+    <script src="/js/board_list.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header_buttons">
+            <a th:href="@{/login}" class="logout_button">로그아웃</a>
+        </div>
+    </header>
+    <div class="board_wrap">
+        <div class="board_title">
+            <strong>공지사항</strong>
+            <p>공지사항을 안내해드립니다.</p>
+        </div>
+        <div class="board_list_wrap">
+            <div class="board_list">
+                <div class="top">
+                    <div class="num">번호</div>
+                    <div class="title">제목</div>
+                    <div class="writer">작성자</div>
+                    <div class="date">작성일</div>
+                    <div class="count">조회수</div>
+                </div>
+            </div>
+
+                <!-- <div>
+                    <div class="num">6</div>
+                    <div class="title"><a href="board_read.html">제목입니다.</a></div>
+                    <div class="writer">김용성</div>
+                    <div class="date">2024.10.05</div>
+                    <div class="count">153</div>
+                </div>
+                <div>
+                    <div class="num">5</div>
+                    <div class="title"><a href="#">제목입니다.</a></div>
+                    <div class="writer">김용성</div>
+                    <div class="date">2024.10.05</div>
+                    <div class="count">153</div>
+                </div>
+                <div>
+                    <div class="num">4</div>
+                    <div class="title"><a href="#">제목입니다.</a></div>
+                    <div class="writer">김용성</div>
+                    <div class="date">2024.10.05</div>
+                    <div class="count">153</div>
+                </div>
+                <div>
+                    <div class="num">3</div>
+                    <div class="title"><a href="#">제목입니다.</a></div>
+                    <div class="writer">김용성</div>
+                    <div class="date">2024.10.05</div>
+                    <div class="count">153</div>
+                </div>
+                <div>
+                    <div class="num">2</div>
+                    <div class="title"><a href="#">제목입니다.</a></div>
+                    <div class="writer">김용성</div>
+                    <div class="date">2024.10.05</div>
+                    <div class="count">153</div>
+                </div>
+                <div>
+                    <div class="num">1</div>
+                    <div class="title"><a href="#">제목입니다.</a></div>
+                    <div class="writer">김용성</div>
+                    <div class="date">2024.10.05</div>
+                    <div class="count">153</div>
+                </div> -->
+
+            <div class="board_page">
+                <a href="" class="bt first"> << </a>
+                <a href="" class="bt prev"> < </a>
+                <a href="" class="num on">1</a>
+                <a href="" class="num">2</a>
+                <a href="" class="num">3</a>
+                <a href="" class="num">4</a>
+                <a href="" class="num">5</a>
+                <a href="" class="bt next"> > </a>
+                <a href="" class="bt last"> >> </a>
+            </div>
+            <div class="board_button_wrap">
+                <a th:href="@{/board-write}" class="on">등록하기</a>
+            </div>
+        </div>
+    </div>
+    <script src="/js/logout.js"></script>
+</body>
+
+</html>

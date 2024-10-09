@@ -25,11 +25,6 @@ public class Post {
     @JoinColumn(name = "uuid")
     private User user;
 
-//    // 게시물 번호(생성 순서대로 할당됨)
-//    @Column(name = "post_no")
-//    @ColumnDefault(value = "nextval('post_no_seq')")
-//    private Long number;
-
     @OneToMany(fetch = LAZY, mappedBy = "post")
     private List<Comment> commentList = new ArrayList<>();
 
@@ -78,17 +73,19 @@ public class Post {
         private Long id;
         private String title;
         private String content;
+        private String username;
         private Long viewCount;
-        private LocalDateTime createdDate;
+        private String createdDate;
     }
 
-    public PostDTO entityToDTO() {
+    public PostDTO entityToDTO(String createdDate, String username) {
         return PostDTO.builder()
                 .id(this.id)
                 .title(this.title)
                 .content(this.content)
                 .viewCount(this.viewCount)
-                .createdDate(this.createdDate)
+                .createdDate(createdDate)
+                .username(username)
                 .build();
     }
 }

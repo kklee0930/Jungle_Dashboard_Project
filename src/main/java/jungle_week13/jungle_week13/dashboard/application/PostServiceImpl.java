@@ -18,6 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -174,11 +175,15 @@ public class PostServiceImpl implements PostService {
     // 모든 게시글 조회
     @Override
     public ResponseGetPostListDto getPostList() {
-        List<Post> postList = postRepository.findAllBySoftDeleteIsFalseOrderById();
+        List<Post> postList = postRepository.findAllBySoftDeleteIsFalseOrderByIdDesc();
         List<Post.PostDTO> postDTOList = new ArrayList<>();
 
         for(Post post : postList) {
-            postDTOList.add(post.entityToDTO());
+            Optional<User> user = userRepository.findByUuid(post.getUser().getUuid());
+            String username = user.get().getUsername();
+            String formattedDate = post.getCreatedDate().format(formatter);
+            Post.PostDTO postDto = post.entityToDTO(formattedDate, username);
+            postDTOList.add(postDto);
         }
         return ResponseGetPostListDto.builder()
                 .postList(postDTOList)

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오카오카이 냐옹카이 | 로그인</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <script src="/js/login.js"></script>
+</head>
+
+<body>
+    <div class="login_container">
+        <div class="welcome_section">
+            <h1>Krafton Jungle </h1>
+            <p>칭찬하고 싶은 사람 모여라~</p>
+        </div>
+        <div class="login_section">
+            <div class="login_form">
+                <h2>로그인 해주세요</h2>
+                <form action="#" method="POST">
+                    <div class="input_wrap">
+                        <label for="email">ID</label>
+                        <input type="email" id="email" name="email" placeholder="이메일을 입력하세요." required>
+                    </div>
+                    <div class="input_wrap">
+                        <label for="password">PW</label>
+                        <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요." required>
+                    </div>
+                    <div class="button_wrap">
+                        <button type="submit">로그인</button>
+                    </div>
+                    <div class="signup_wrap">
+                        <p>아직 회원가입을 하지 않으셨나요? <a th:href="@{/signup}">회원가입</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

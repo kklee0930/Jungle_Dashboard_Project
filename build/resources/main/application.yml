@@ -1,5 +1,8 @@
 #spring.application.name=jungle-week13-dashboard
 spring:
+#  thymeleaf:
+#    prefix: classpath:/resources/static/html
+#    suffix: .html
   h2:
     console:
       enabled: true
